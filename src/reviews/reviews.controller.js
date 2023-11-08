@@ -8,9 +8,6 @@ async function read(req, res, next) {
 async function reviewExists(req, res, next) {
   const { reviewId } = req.params;
   const review = await services.read(Number(reviewId));
-
-  // console.log("reviewId",reviewId);
-  // console.log("review", review);
   if (review) {
     res.locals.review = review;
     return next();
@@ -34,7 +31,6 @@ async function update(req, res) {
     ...req.body.data,
     review_id: res.locals.review.review_id,
   };
-  // console.log("upR", updatedReview);
   await services.update(updatedReview);
   const review = await services.read(Number(review_id));
 

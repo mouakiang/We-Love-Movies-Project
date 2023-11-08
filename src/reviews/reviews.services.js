@@ -23,7 +23,6 @@ function getCritics(criticId) {
 }
 
 function update(updatedReview) {
-  // console.log("servicesUpR:", updatedReview);
   return knex("reviews")
     .select("*")
     .where({ review_id: updatedReview.review_id })
